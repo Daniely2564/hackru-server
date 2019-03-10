@@ -12,6 +12,8 @@ router.route('/car')
     .post((req,res)=>{
         const {body} = req;
         const car = new Car();
+        car.model = body.model;
+        car.modelId = body.modelId;
         car.longitude = body.longitude;
         car.latitude = body.latitude;
         car.save();
