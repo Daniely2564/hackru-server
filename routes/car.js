@@ -9,14 +9,15 @@ router.route('/car')
         }
         return cars;
     })
-    .post((req,res)=>{
+    .post(async (req,res)=>{
         const {body} = req;
         const car = new Car();
         car.model = body.model;
         car.modelId = body.modelId;
         car.longitude = body.longitude;
         car.latitude = body.latitude;
-        car.save();
+       const newCar = await car.save();
+       return newCar;
     });
 
 module.exports = router;
